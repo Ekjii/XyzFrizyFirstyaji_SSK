@@ -1,6 +1,6 @@
 # Environment Variable and Set-UID Program Lab
 
-Name: Xyz Frizy Firstyaji  
+Nama: Xyz Frizy Firstyaji  
 NRP: 5024221073
 
 This repository contains the report for the SEED Lab:
@@ -9,16 +9,6 @@ Environment Variable and Set-UID Program Lab.
 ## Contents
 
 - report.pdf → Full lab report (Task 1–9)
-
-## Topics Covered
-
-- Environment Variables
-- Process Environment
-- execve() and system()
-- Set-UID Programs
-- PATH Attacks
-- LD_PRELOAD Attacks
-- Privilege Escalation
 
 ## Lab Tasks
 
