@@ -230,13 +230,16 @@ Hal ini membuktikan bahwa komunikasi antar mesin melalui pipeline dan TCP berhas
 
 ### W6.12
 
-Pada percobaan ini dibuat sebuah program C yang melakukan fork dan menjalankan `/bin/sh` menggunakan `execve`.
+Pada percobaan ini dibuat sebuah program C yang melakukan fork dan menjalankan `/bin/sh` menggunakan fungsi `execve`.
 
-Program yang digunakan:
+Program ini bertujuan untuk melihat apakah environment variable yang mengandung payload Shellshock dapat diteruskan ke child process.
 
-### #include <stdio.h>
-### #include <stdlib.h>
-### #include <unistd.h>
+Program yang digunakan adalah sebagai berikut:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 extern char **environ;
 
@@ -263,24 +266,27 @@ int main()
     return 0;
 }
 
-Program Compile:
+Program kemudian dikompilasi dan dijalankan dengan perintah berikut:
+
 ekji@joyy:~$ nano prog.c
-ekji@joyy:~$ gcc prog.c -o prog
-ekji@joyy:~$ export foo='() { echo hello; }; echo world;'
-ekji@joyy:~$ ./prog
+gcc prog.c -o prog
+export foo='() { echo hello; }; echo world;'
+./prog
 parent
 child
-ekji@joyy:~$ Desktop    Music     Templates    ls           prog      snap
-Documents  Pictures  Videos    path_attack    prog.c      src-arm
-Downloads  Public    bof-lab    path_attack.c  seed-labs  src-arm.zip
+ekji@joyy:~$ bof-lab    ls          Pictures  seed-labs         src-arm
+Desktop    Music      prog        shellshock-test  src-arm.zip
+Documents  path_attack      prog.c    snap         Templates
+Downloads  path_attack.c  Public    sqli-demo         Videos
 
-Tidak muncul output "hello" maupun "world", dan program menjalankna oerintah /bin/ls dan menampilkan daftar file.
+Dari hasil tersebut terlihat bahwa tidak muncul output “hello” maupun “world”, meskipun payload Shellshock telah dimasukkan ke dalam environment variable.
 
-Hal ini terjadi karena pada fungsi execve, parameter environment diatur menjadi NULL, sehingga environment variable (termasuk payload Shellshock) tidak diteruskan ke child process.
+Hal ini terjadi karena pada fungsi execve, parameter environment diatur menjadi NULL, sehingga environment variable tidak diteruskan ke child process.
 
-Akibatnya, Bash tidak menerima environment variable yang berisi payload, sehingga tidak ada perintah tambahan yang dieksekusi.
+Akibatnya, Bash yang dijalankan pada child process tidak menerima environment variable yang mengandung payload, sehingga tidak ada perintah tambahan yang dieksekusi.
 
-Dengan demikian, meskipun terdapat payload Shellshock pada environment variable, eksploitasi tidak berhasil karena environment tidak diteruskan ke proses child.
+Kesimpulan:
+Eksploitasi Shellshock tidak berhasil karena environment variable tidak diwariskan ke child process. Hal ini menunjukkan bahwa pewarisan environment variable merupakan faktor penting dalam keberhasilan eksploitasi Shellshock.
 
 ### W6.13
 
