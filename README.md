@@ -16,9 +16,9 @@ Done:
 Task 1 – Manipulating Environment Variables  
 Task 2 – Passing Environment Variables to Child Process  
 Task 3 – Environment Variables and execve()  
+Task 4 – Environment Variables and system() 
 
-On progress:
-Task 4 – Environment Variables and system()  
+On progress: 
 Task 5 – Environment Variables and Set-UID Programs  
 Task 6 – PATH Environment Variable Attack  
 Task 7 – LD_PRELOAD Environment Variable  
