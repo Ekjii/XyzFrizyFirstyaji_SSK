@@ -155,7 +155,7 @@ Input tersebut akan diproses oleh server dan dimasukkan ke dalam query SQL.
 Jika query tidak aman, maka attacker dapat menyisipkan kode SQL melalui input tersebut.
 
 Flow:
-User → Web Application → SQL Query → Database
+User -> Web Application -> SQL Query -> Database
 
 Kesimpulan: web application menjadi perantara yang memungkinkan SQL Injection.
 

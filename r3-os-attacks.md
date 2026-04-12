@@ -66,8 +66,8 @@ test
 ```
 
 Penjelasan:
-- `() { :;}` → definisi fungsi
-- `echo hacked` → payload tambahan
+- `() { :;}` -> definisi fungsi
+- `echo hacked` -> payload tambahan
 
 Kesimpulan: Shellshock = function + command injection
 
@@ -104,7 +104,7 @@ Keduanya HARUS terpenuhi.
 Alur CGI:
 
 ```
-User → HTTP → Web Server → Environment Variable → Bash
+User -> HTTP -> Web Server -> Environment Variable -> Bash
 ```
 
 Contoh:
@@ -117,7 +117,7 @@ Menjadi:
 HTTP_USER_AGENT="() { :;}; echo hacked"
 ```
 
-Jika vulnerable → `echo hacked` dieksekusi.
+Jika vulnerable -> `echo hacked` dieksekusi.
 
 ---
 
@@ -130,7 +130,7 @@ Harus:
 () { :;}; command
 ```
 
-Tanpa itu → tidak dieksekusi.
+Tanpa itu -> tidak dieksekusi.
 
 ---
 
@@ -201,7 +201,7 @@ halo dari machine 2
 
 Alur:
 ```
-Machine 2 → Machine 1 → Machine 3
+Machine 2 -> Machine 1 -> Machine 3
 ```
 
 ---
@@ -254,7 +254,7 @@ child
 
 Tidak muncul `hello` atau `world`.
 
-Karena `execve(..., NULL)` → environment tidak diteruskan.
+Karena `execve(..., NULL)` -> environment tidak diteruskan.
 
 ---
 
@@ -269,7 +269,7 @@ Output tetap sama.
 
 Artinya:
 - environment sudah diteruskan  
-- tapi Bash sudah patched → tidak execute payload  
+- tapi Bash sudah patched -> tidak execute payload  
 
 ---
 
@@ -279,12 +279,12 @@ Perbandingan:
 
 CGI:
 ```
-HTTP → env → Bash
+HTTP -> env -> Bash
 ```
 
 PHP:
 ```
-HTTP → PHP → system() → shell
+HTTP -> PHP -> system() -> shell
 ```
 
 CGI lebih rentan karena env langsung ke Bash.
@@ -327,7 +327,7 @@ Output:
 User-Agent: () { :;}; echo hacked
 ```
 
-Tidak ada eksekusi → sistem patched.
+Tidak ada eksekusi -> sistem patched.
 
 ---
 
