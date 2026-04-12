@@ -16,8 +16,8 @@ Implementasi
 Membuat file bof.c menggunakan strcpy/gets.
 
 3.1 Program
-#include <stdio.h>
-#include <string.h>
+### #include <stdio.h>
+### #include <string.h>
 
 void bof()
 {

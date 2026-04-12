@@ -139,12 +139,12 @@ Kesimpulan: prepared statement harus digunakan untuk semua input user, bukan han
 
 ### W4.10
 
-Versi aman menggunakan prepared statement:
+Menggunakan prepared statement:
 
-```php
 $stmt = $conn->prepare("UPDATE employee SET password=? WHERE eid=? and password=?");
 $stmt->bind_param("sss", $newpwd, $eid, $oldpwd);
 $stmt->execute();
+
 
 ### W4.11
 

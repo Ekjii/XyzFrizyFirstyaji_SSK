@@ -191,7 +191,6 @@ Untuk menjalankan program `/bin/cat` di Machine 1, menerima input dari Machine 2
 Langkah-langkahnya adalah sebagai berikut:
 
 1. Machine 3 menjalankan listener untuk menerima output:
-```bash
 nc -l 7071
 
 2.    Machine 1 menjalankan program /bin/cat dan mengarahkan output ke Machine 3:
@@ -235,7 +234,6 @@ Pada percobaan ini dibuat sebuah program C yang melakukan fork dan menjalankan `
 
 Program yang digunakan:
 
-```c
 ### #include <stdio.h>
 ### #include <stdlib.h>
 ### #include <unistd.h>
