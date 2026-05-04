@@ -1,4 +1,3 @@
-}
 # R5 - Network Attacks
 
 Nama: Xyz Frizy Firstyaji  
